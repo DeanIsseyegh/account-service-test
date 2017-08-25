@@ -2,7 +2,7 @@ package atm.logic;
 
 import atm.exceptions.AccountDoesNotExistException;
 import atm.exceptions.InvalidAccountsException;
-import atm.exceptions.NotEnoughMoney;
+import atm.exceptions.NotEnoughMoneyException;
 import atm.model.Account;
 
 import java.math.BigDecimal;
@@ -34,10 +34,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void withdraw(BigDecimal amount, int accountId) throws NotEnoughMoney {
+	public void withdraw(BigDecimal amount, int accountId) throws NotEnoughMoneyException {
 		Account account = retrieveAccount(accountId);
 		if (!account.hasAmountAvailable(amount)) {
-			throw new NotEnoughMoney("User with balance of " + amount +
+			throw new NotEnoughMoneyException("User with balance of " + amount +
 					" does not have enough money to withdraw an amount of" + account.getBalance());
 		}
 		account.decreaseBalance(amount);

@@ -1,7 +1,7 @@
 package atm.logic;
 
 import atm.exceptions.InvalidAccountsException;
-import atm.exceptions.NotEnoughMoney;
+import atm.exceptions.NotEnoughMoneyException;
 import atm.model.Account;
 import org.junit.Test;
 
@@ -52,7 +52,7 @@ public class AccountServiceImplTest {
 		assertThat(accountService.checkBalance(1), is("8.00"));
 	}
 
-	@Test(expected = NotEnoughMoney.class)
+	@Test(expected = NotEnoughMoneyException.class)
 	public void givenAccountWithNotEnoughMoney_When_WithdrawingMoney_Then_ExceptionIsThrown() throws Exception {
 		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.ONE))
 				.collect(Collectors.toSet());
