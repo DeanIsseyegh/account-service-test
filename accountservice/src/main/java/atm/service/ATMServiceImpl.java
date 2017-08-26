@@ -17,7 +17,6 @@ public class ATMServiceImpl implements ATMService {
 
 	public static Logger logger = LoggerFactory.getLogger(ATMServiceImpl.class);
 
-	//Use composition for account service vs inheritance here as its an has-a relation as opposed to an is-a
 	private AccountService accountService;
 	private List<Note> notes = new ArrayList<>();
 

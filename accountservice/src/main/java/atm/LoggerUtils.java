@@ -4,10 +4,6 @@ import java.math.BigDecimal;
 
 public class LoggerUtils {
 
-	public static String createBalanceLogMsg(String method, int accountId) {
-		return "Action: " + method + " | Account id : " + accountId;
-	}
-
 	public static String createBalanceLogMsg(String method, int accountId, String balance) {
 		return "Action: " + method + " | Account id : " + accountId + " | Balance: " + balance;
 	}

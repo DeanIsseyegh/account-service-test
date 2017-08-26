@@ -23,11 +23,6 @@ public class Account {
 		return balance;
 	}
 
-	/**
-	 * Logic here assumes there is no overdraft
-	 * @param amount
-	 * @return
-	 */
 	public Boolean canWithdrawAmountOf(BigDecimal amount) {
 		return amount.compareTo(getBalance()) < 0;
 	}

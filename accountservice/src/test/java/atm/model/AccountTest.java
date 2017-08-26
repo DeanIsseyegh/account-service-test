@@ -24,19 +24,19 @@ public class AccountTest {
 	}
 
 	@Test(expected = InvalidBalanceException.class)
-	public void givenNegativeAmountThenThrowException() throws Exception {
+	public void Given_NegativeAmountThenThrowException() throws Exception {
 		BigDecimal amount = new BigDecimal("-1");
 		new Account(1, amount);
 	}
 
 	@Test
-	public void givenEnoughMoney_Then_ReturnTrue() throws Exception {
+	public void Given_EnoughMoney_Then_ReturnTrue() throws Exception {
 		BigDecimal amount = BigDecimal.ONE;
 		Account account = new Account(1, BigDecimal.TEN);
 		assertThat(account.canWithdrawAmountOf(amount), is(true));
 	}
 	@Test
-	public void givenNotEnoughMoney_Then_ReturnFalse() throws Exception {
+	public void Given_NotEnoughMoney_Then_ReturnFalse() throws Exception {
 		BigDecimal amount = BigDecimal.TEN;
 		Account account = new Account(1, BigDecimal.ONE);
 		assertThat(account.canWithdrawAmountOf(amount), is(false));
