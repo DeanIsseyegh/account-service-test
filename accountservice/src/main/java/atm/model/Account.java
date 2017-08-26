@@ -28,7 +28,7 @@ public class Account {
 	 * @param amount
 	 * @return
 	 */
-	public Boolean hasAmountAvailable(BigDecimal amount) {
+	public Boolean canWithdrawAmountOf(BigDecimal amount) {
 		return amount.compareTo(getBalance()) < 0;
 	}
 

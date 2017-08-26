@@ -1,8 +1,9 @@
-package atm.logic;
+package atm.service;
 
 import atm.exceptions.InvalidAccountsException;
 import atm.exceptions.NotEnoughMoneyException;
 import atm.model.Account;
+import atm.service.AccountServiceImpl;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -22,8 +23,7 @@ public class AccountServiceImplTest {
 
 	@Test
 	public void givenAnAccount_When_CheckingBalance_Then_ReturnAccountsBalance() throws Exception {
-		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.ONE))
-				.collect(Collectors.toSet());
+		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.ONE)).collect(Collectors.toSet());
 		AccountServiceImpl accountService = new AccountServiceImpl(accounts);
 		assertThat(accountService.checkBalance(1), is("1.00"));
 	}
@@ -31,18 +31,15 @@ public class AccountServiceImplTest {
 	@Test
 	public void givenMultipleAccounts_When_CheckingBalance_Then_ReturnAccountsBalance() throws Exception {
 		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.ONE),
-				new Account(2, BigDecimal.TEN))
-				.collect(Collectors.toSet());
+				new Account(2, BigDecimal.TEN)).collect(Collectors.toSet());
 		AccountServiceImpl accountService = new AccountServiceImpl(accounts);
 		assertThat(accountService.checkBalance(1), is("1.00"));
 		assertThat(accountService.checkBalance(2), is("10.00"));
 	}
 
-
 	@Test
 	public void When_WithdrawingMoney_Then_BalanceShouldDecrease() throws Exception {
-		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.TEN))
-				.collect(Collectors.toSet());
+		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.TEN)).collect(Collectors.toSet());
 		AccountServiceImpl accountService = new AccountServiceImpl(accounts);
 
 		accountService.withdraw(BigDecimal.ONE,1);
@@ -54,8 +51,7 @@ public class AccountServiceImplTest {
 
 	@Test(expected = NotEnoughMoneyException.class)
 	public void givenAccountWithNotEnoughMoney_When_WithdrawingMoney_Then_ExceptionIsThrown() throws Exception {
-		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.ONE))
-				.collect(Collectors.toSet());
+		Set<Account> accounts = Stream.of(new Account(1, BigDecimal.ONE)).collect(Collectors.toSet());
 		AccountServiceImpl accountService = new AccountServiceImpl(accounts);
 		accountService.withdraw(BigDecimal.TEN,1);
 	}

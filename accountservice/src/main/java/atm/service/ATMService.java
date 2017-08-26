@@ -1,4 +1,4 @@
-package atm.logic;
+package atm.service;
 
 import atm.model.Note;
 

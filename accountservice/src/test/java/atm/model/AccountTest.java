@@ -33,13 +33,13 @@ public class AccountTest {
 	public void givenEnoughMoney_Then_ReturnTrue() throws Exception {
 		BigDecimal amount = BigDecimal.ONE;
 		Account account = new Account(1, BigDecimal.TEN);
-		assertThat(account.hasAmountAvailable(amount), is(true));
+		assertThat(account.canWithdrawAmountOf(amount), is(true));
 	}
 	@Test
 	public void givenNotEnoughMoney_Then_ReturnFalse() throws Exception {
 		BigDecimal amount = BigDecimal.TEN;
 		Account account = new Account(1, BigDecimal.ONE);
-		assertThat(account.hasAmountAvailable(amount), is(false));
+		assertThat(account.canWithdrawAmountOf(amount), is(false));
 	}
 
 	@Test
